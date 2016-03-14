@@ -16,7 +16,7 @@ import com.ninexinnovation.incitektm.R;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
+public class CustomListAdapter extends BaseAdapter implements View.OnClickListener {
     private Activity activity;
     private ArrayList data;
     private static LayoutInflater inflater=null;
@@ -24,7 +24,7 @@ public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
     ListModel tempValues=null;
     int i=0;
 
-    public CustomAdapter(Activity a, ArrayList d,Resources resLocal) {
+    public CustomListAdapter(Activity a, ArrayList d, Resources resLocal) {
 
         activity = a;
         data=d;
@@ -52,10 +52,10 @@ public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
 
     public static class ViewHolder{
 
-        public TextView text;
-        public TextView text1;
-        public TextView textWide;
-        public ImageView image;
+        public TextView txtProfileName;
+        public TextView txtProductName;
+        public TextView txtLocation;
+        public TextView txtRating;
 
     }
 
@@ -70,10 +70,10 @@ public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
             vi = inflater.inflate(R.layout.tabitem, null);
 
             holder = new ViewHolder();
-            holder.text = (TextView) vi.findViewById(R.id.text);
-            holder.text1=(TextView)vi.findViewById(R.id.text1);
-            holder.image=(ImageView)vi.findViewById(R.id.image);
-
+            holder.txtProductName=(TextView) vi.findViewById(R.id.txtProductName);
+            holder.txtProfileName=(TextView) vi.findViewById(R.id.txtProfileName);
+            holder.txtLocation=(TextView) vi.findViewById(R.id.txtLocation);
+            holder.txtRating=(TextView) vi.findViewById(R.id.txtRating);
             vi.setTag( holder );
         }
         else
@@ -81,23 +81,19 @@ public class CustomAdapter extends BaseAdapter implements View.OnClickListener {
 
         if(data.size()<=0)
         {
-            holder.text.setText("No Data");
+            holder.txtProfileName.setText("No Data");
 
         }
         else
         {
-            /***** Get each Model object from Arraylist ********/
             tempValues=null;
             tempValues = ( ListModel ) data.get( position );
 
-            /************  Set Model values in Holder elements ***********/
+            holder.txtProfileName.setText(tempValues.getProfileName());
+            holder.txtProductName.setText( tempValues.getProductName());
+            holder.txtLocation.setText( tempValues.getLocation());
+            holder.txtRating.setText( tempValues.getRating());
 
-            holder.text.setText( tempValues.getCompanyName() );
-            holder.text1.setText( tempValues.getUrl() );
-            holder.image.setImageResource(
-                    res.getIdentifier(
-                            "com.androidexample.customlistview:drawable/"+tempValues.getImage()
-                            ,null,null));
 
             /******** Set Item Click Listner for LayoutInflater for each row *******/
 

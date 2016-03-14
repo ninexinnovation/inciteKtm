@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ninexinnovation.incitektm">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +20,14 @@
         <activity
             android:name=".OverPricingActivity"
             android:label="@string/title_activity_over_pricing"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".OverPricingProfile" />
+        <activity android:name=".Rating" />
+        <activity android:name=".OverPricingCreateProfile" />
+        <activity android:name=".TravelFareActivity" />
+        <activity android:name=".TravelFareLocal" />
+        <activity android:name=".TravelFareTaxi" />
+        <activity android:name=".FoodPricesActivity"></activity>
     </application>
 
 </manifest>
